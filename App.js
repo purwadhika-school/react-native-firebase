@@ -24,7 +24,10 @@ class App extends Component {
       password: "",
       authenticating: false
     };
+    this.firebaseSetup()
+  }
 
+  firebaseSetup() {
     const config = {
       apiKey: "",
       authDomain: "",
@@ -80,18 +83,32 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.welcome}>Login Page</Text>
         <TextInput
-          placeholder="Enter your email..."
+          style={{ width: "90%" }}
+          placeholder="Email"
           onChangeText={email => this.setState({ email })}
         />
         <TextInput
-          placeholder="Enter your password..."
+          style={{ width: "90%" }}
+          placeholder="Password"
+          secureTextEntry={true}
           onChangeText={password => this.setState({ password })}
         />
-        <TouchableOpacity onPress={() => this.onPressSignIn()}>
-          <Text>Submit</Text>
+        <TouchableOpacity
+          style={{ backgroundColor: "orange" }}
+          onPress={() => this.onPressSignIn()}
+        >
+          <Text
+            style={{
+              margin: 15,
+              fontSize: 17,
+              color: "white",
+              fontWeight: "bold"
+            }}
+          >
+            Submit
+          </Text>
         </TouchableOpacity>
       </View>
     );
