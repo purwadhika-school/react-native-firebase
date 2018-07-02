@@ -13,17 +13,19 @@ import {
   TextInput,
   TouchableOpacity
 } from "react-native";
+const firebase = require("firebase");
 
 class App extends Component {
-  state = {
-    email: "",
-    password: "",
-    authenticating: false
-  };
+  constructor(props) {
+    super(props);
 
-  onPressSignIn() {
-    const firebase = require("firebase");
-    var config = {
+    state = {
+      email: "",
+      password: "",
+      authenticating: false
+    };
+
+    const config = {
       apiKey: "",
       authDomain: "",
       databaseURL: "",
@@ -32,7 +34,9 @@ class App extends Component {
       messagingSenderId: ""
     };
     firebase.initializeApp(config);
+  }
 
+  onPressSignIn() {
     this.setState({
       authenticating: true
     });
@@ -113,4 +117,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App
+export default App;
