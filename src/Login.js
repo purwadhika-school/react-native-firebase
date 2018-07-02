@@ -46,38 +46,28 @@ class Login extends Component {
 
     const { email, password } = this.state;
 
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(user => {
-        console.log(user);
-        console.log(user.user.uid);
-        this.setState({
-          authenticating: false,
-          user,
-          error: ""
+    if ((email !== "") | (password !== "")) {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(user => {
+          console.log(user);
+          console.log(user.user.uid);
+          this.setState({
+            authenticating: false,
+            user,
+            error: ""
+          });
+          
+          if (user.user.uid && user.user.uid !== ""){
+              this.props.navigation.navigate("MainPage")
+          }
+
+        })
+        .catch(() => {
+          console.log("Login error!");
         });
-      })
-      .catch(() => {
-        // Login was not successful
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(user =>
-            this.setState({
-              authenticating: false,
-              user,
-              error: ""
-            })
-          )
-          .catch(() =>
-            this.setState({
-              authenticating: false,
-              user: null,
-              error: "Authentication Failure"
-            })
-          );
-      });
+    }
   }
 
   render() {
@@ -95,7 +85,7 @@ class Login extends Component {
           secureTextEntry={true}
           onChangeText={password => this.setState({ password })}
         />
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: "row" }}>
           <TouchableOpacity
             style={{ backgroundColor: "orange", marginRight: 5 }}
             onPress={() => this.onPressSignIn()}
@@ -114,8 +104,9 @@ class Login extends Component {
           <TouchableOpacity
             style={{ backgroundColor: "blue", marginLeft: 5 }}
             onPress={() => {
-                console.log(this.props)
-                this.props.navigation.navigate('SignupPage')}}
+              console.log(this.props);
+              this.props.navigation.navigate("SignupPage");
+            }}
           >
             <Text
               style={{
