@@ -21,39 +21,15 @@ class App extends Component {
     authenticating: false
   };
 
-  // initializeFirebase() {
-  //   // const firebase = require("firebase")
-
-  //   // Initialize Firebase
-  //   var config = {
-  //     apiKey: "AIzaSyA_QJL7p_xeIVPpGvYdSINJYTNtIQqaIbs",
-  //     authDomain: "rnfb-bc6b0.firebaseapp.com",
-  //     databaseURL: "https://rnfb-bc6b0.firebaseio.com",
-  //     projectId: "rnfb-bc6b0",
-  //     storageBucket: "rnfb-bc6b0.appspot.com",
-  //     messagingSenderId: "507539381018"
-  //   }
-  //   firebase.initializeApp(config)
-
-  //   //inicializando o firestore
-  //   // const firestore = require("firebase/firestore")
-  //   // db = firebase.firestore()
-  //   // db.settings({ timestampsInSnapshots: true })
-  // }
-
-  // componentWillMount() {
-  //   this.initializeFirebase()
-  // }
-
   onPressSignIn() {
     const firebase = require("firebase");
     var config = {
-      apiKey: "AIzaSyA_QJL7p_xeIVPpGvYdSINJYTNtIQqaIbs",
-      authDomain: "rnfb-bc6b0.firebaseapp.com",
-      databaseURL: "https://rnfb-bc6b0.firebaseio.com",
-      projectId: "rnfb-bc6b0",
-      storageBucket: "rnfb-bc6b0.appspot.com",
-      messagingSenderId: "507539381018"
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: ""
     };
     firebase.initializeApp(config);
 
